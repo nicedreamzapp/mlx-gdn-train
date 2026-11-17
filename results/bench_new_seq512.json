@@ -1,0 +1,51 @@
+{
+ "path": "new",
+ "tf32": false,
+ "seq": 512,
+ "steps": 4,
+ "load_s": 3.9,
+ "trainable_params_M": 233.5,
+ "sec_per_step_warm": 3.23,
+ "tok_s_warm": 158.5,
+ "mlx_peak_gb": 59.39,
+ "footprint_max_gb": 61.35,
+ "chunked_calls": 384,
+ "per_step": [
+  {
+   "step": 0,
+   "sec": 3.38,
+   "tok_s": 151.5,
+   "loss": 8.4465,
+   "mlx_peak_gb": 59.2,
+   "footprint_gb": 60.46,
+   "footprint_max_gb": 61.13
+  },
+  {
+   "step": 1,
+   "sec": 3.11,
+   "tok_s": 164.4,
+   "loss": 6.0785,
+   "mlx_peak_gb": 59.39,
+   "footprint_gb": 60.43,
+   "footprint_max_gb": 61.35
+  },
+  {
+   "step": 2,
+   "sec": 3.27,
+   "tok_s": 156.4,
+   "loss": 5.7235,
+   "mlx_peak_gb": 59.39,
+   "footprint_gb": 60.43,
+   "footprint_max_gb": 61.35
+  },
+  {
+   "step": 3,
+   "sec": 3.31,
+   "tok_s": 154.9,
+   "loss": 3.3308,
+   "mlx_peak_gb": 59.39,
+   "footprint_gb": 60.46,
+   "footprint_max_gb": 61.35
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+[mem] gdn-bench: waited 611s for 72GB
+old: loss512=8.382998 loss128=6.731126 peak=95.0GB
+[gdn_patch] chunked gated-delta training path ON for ['mlx_lm.models.qwen3_5', 'mlx_lm.models.qwen3_next']
+new: loss512=8.400990 loss128=6.681556 peak=95.0GB
+dA_log: max_abs=2.886e-02 rel=2.775e-01
+ddt_bias: max_abs=3.021e-03 rel=1.456e-01
+loss512 diff=1.80e-02  chunked calls=144

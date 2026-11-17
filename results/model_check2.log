@@ -1,0 +1,12 @@
+[gdn_patch] chunked gated-delta training path ON for ['mlx_lm.models.qwen3_5', 'mlx_lm.models.qwen3_next']
+A 512-token loss: metal-kernel=8.374291 ops(old train path)=8.382998 chunked=8.400990 | |kernel-ops|=8.71e-03 |chunked-ops|=1.80e-02 |chunked-kernel|=2.67e-02
+B 2048 tokens: loss kernel=10.5464
+B 2048 tokens: loss chunked=10.5422
+B first non-finite layer: kernel (None, None)  chunked (None, None)
+[gdn_patch] chunked gated-delta training path ON for ['mlx_lm.models.qwen3_5', 'mlx_lm.models.qwen3_next']
+C real layer0 fp32, 1024 real tokens: y rel=2.71e-07
+  dA_log: rel=3.14e-05
+  ddt_bias: rel=8.27e-06
+  din_proj_a.weight: rel=6.93e-06
+  din_proj_b.weight: rel=2.61e-06
+  din_proj_qkv.weight: rel=1.62e-06

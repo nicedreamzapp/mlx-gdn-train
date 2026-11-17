@@ -1,0 +1,130 @@
+
+B=1 T=64 Hk=1 Hv=1 Dk=32 Dv=32 float32  worst rel=2.47e-03
+  y        max_abs=2.960e-04  rel=2.243e-03
+  state    max_abs=2.793e-04  rel=5.205e-04
+  dq       max_abs=5.941e-03  rel=1.148e-03
+  dk       max_abs=3.790e-03  rel=8.502e-04
+  dv       max_abs=1.188e-03  rel=1.455e-03
+  dg_log   max_abs=6.413e-05  rel=2.469e-03
+  dbeta    max_abs=6.170e-03  rel=1.120e-03
+  dstate0  max_abs=1.036e-05  rel=1.047e-03
+
+B=2 T=100 Hk=2 Hv=6 Dk=32 Dv=32 float32  worst rel=1.99e-03
+  y        max_abs=3.606e-04  rel=1.993e-03
+  state    max_abs=1.060e-03  rel=1.040e-03
+  dq       max_abs=1.626e-02  rel=1.849e-03
+  dk       max_abs=1.882e-02  rel=1.264e-03
+  dv       max_abs=2.993e-03  rel=1.330e-03
+  dg_log   max_abs=3.735e-04  rel=1.538e-03
+  dbeta    max_abs=9.054e-03  rel=1.037e-03
+  dstate0  max_abs=7.193e-05  rel=9.615e-04
+
+B=2 T=130 Hk=4 Hv=4 Dk=64 Dv=32 float32  worst rel=1.76e-03
+  y        max_abs=1.387e-04  rel=1.505e-03
+  state    max_abs=7.827e-04  rel=9.526e-04
+  dq       max_abs=7.556e-03  rel=1.759e-03
+  dk       max_abs=1.270e-02  rel=1.007e-03
+  dv       max_abs=2.768e-03  rel=1.417e-03
+  dg_log   max_abs=1.362e-04  rel=5.629e-04
+  dbeta    max_abs=8.780e-03  rel=9.520e-04
+  dstate0  max_abs=1.730e-06  rel=1.014e-03
+
+B=1 T=300 Hk=16 Hv=48 Dk=128 Dv=128 float32  worst rel=2.12e-03
+  y        max_abs=1.574e-04  rel=2.123e-03
+  state    max_abs=1.207e-03  rel=1.654e-03
+  dq       max_abs=2.240e-02  rel=2.104e-03
+  dk       max_abs=5.761e-02  rel=1.342e-03
+  dv       max_abs=3.204e-03  rel=1.127e-03
+  dg_log   max_abs=2.846e-02  rel=9.809e-04
+  dbeta    max_abs=3.082e-02  rel=1.091e-03
+  dstate0  max_abs=7.501e-05  rel=1.049e-03
+
+B=1 T=2048 Hk=16 Hv=48 Dk=128 Dv=128 float32  worst rel=1.66e-03
+  y        max_abs=1.715e-04  rel=1.661e-03
+  state    max_abs=7.596e-04  rel=1.287e-03
+
+B=1 T=1000 Hk=16 Hv=48 Dk=128 Dv=128 float32  worst rel=2.11e-03
+  y        max_abs=1.563e-04  rel=2.054e-03
+  state    max_abs=1.516e-03  rel=2.109e-03
+  dq       max_abs=2.542e-02  rel=1.660e-03
+  dk       max_abs=4.076e-02  rel=9.723e-04
+  dv       max_abs=3.689e-03  rel=1.222e-03
+  dg_log   max_abs=6.924e-03  rel=7.454e-04
+  dbeta    max_abs=3.333e-02  rel=1.180e-03
+  dstate0  max_abs=8.525e-05  rel=8.069e-04
+
+REPEATED-KEYS B=1 T=500 Hk=16 Hv=48 Dk=128 Dv=128 float32  worst rel=7.34e-03
+  y        max_abs=3.458e-04  rel=3.176e-03
+  state    max_abs=6.653e-03  rel=6.363e-03
+  dq       max_abs=1.259e-01  rel=6.422e-03
+  dk       max_abs=2.485e-01  rel=1.941e-03
+  dv       max_abs=4.585e-03  rel=1.297e-03
+  dg_log   max_abs=1.756e-01  rel=7.340e-03
+  dbeta    max_abs=1.124e-01  rel=3.018e-03
+  dstate0  max_abs=5.995e-04  rel=1.699e-04
+
+B=1 T=64 Hk=1 Hv=1 Dk=32 Dv=32 bfloat16  worst rel=4.76e-03  (ref bf16-vs-fp32 floor on y: 6.61e-03)
+  y        max_abs=4.883e-04  rel=3.676e-03
+  state    max_abs=1.820e-04  rel=3.378e-04
+  dq       max_abs=1.562e-02  rel=3.030e-03
+  dk       max_abs=1.562e-02  rel=3.497e-03
+  dv       max_abs=3.906e-03  rel=4.762e-03
+  dg_log   max_abs=2.704e-05  rel=1.041e-03
+  dbeta    max_abs=1.953e-03  rel=3.551e-04
+  dstate0  max_abs=6.033e-06  rel=6.093e-04
+
+B=2 T=100 Hk=2 Hv=6 Dk=32 Dv=32 bfloat16  worst rel=7.14e-03  (ref bf16-vs-fp32 floor on y: 4.50e-03)
+  y        max_abs=9.766e-04  rel=5.405e-03
+  state    max_abs=7.046e-04  rel=6.904e-04
+  dq       max_abs=6.250e-02  rel=7.143e-03
+  dk       max_abs=6.250e-02  rel=4.202e-03
+  dv       max_abs=7.812e-03  rel=3.472e-03
+  dg_log   max_abs=3.685e-04  rel=1.517e-03
+  dbeta    max_abs=3.906e-03  rel=4.464e-04
+  dstate0  max_abs=3.418e-05  rel=4.548e-04
+
+B=2 T=130 Hk=4 Hv=4 Dk=64 Dv=32 bfloat16  worst rel=5.32e-03  (ref bf16-vs-fp32 floor on y: 5.01e-03)
+  y        max_abs=4.883e-04  rel=5.319e-03
+  state    max_abs=5.845e-04  rel=7.077e-04
+  dq       max_abs=1.562e-02  rel=3.623e-03
+  dk       max_abs=3.125e-02  rel=2.475e-03
+  dv       max_abs=7.812e-03  rel=3.984e-03
+  dg_log   max_abs=1.491e-04  rel=6.151e-04
+  dbeta    max_abs=1.562e-02  rel=1.689e-03
+  dstate0  max_abs=1.394e-06  rel=8.202e-04
+
+B=1 T=300 Hk=16 Hv=48 Dk=128 Dv=128 bfloat16  worst rel=5.88e-03  (ref bf16-vs-fp32 floor on y: 4.86e-03)
+  y        max_abs=2.441e-04  rel=3.289e-03
+  state    max_abs=7.569e-04  rel=1.044e-03
+  dq       max_abs=6.250e-02  rel=5.882e-03
+  dk       max_abs=2.500e-01  rel=5.814e-03
+  dv       max_abs=7.812e-03  rel=2.747e-03
+  dg_log   max_abs=2.930e-02  rel=1.010e-03
+  dbeta    max_abs=1.250e-01  rel=4.425e-03
+  dstate0  max_abs=4.747e-05  rel=6.658e-04
+
+B=1 T=2048 Hk=16 Hv=48 Dk=128 Dv=128 bfloat16  worst rel=4.72e-03  (ref bf16-vs-fp32 floor on y: 4.39e-03)
+  y        max_abs=4.883e-04  rel=4.717e-03
+  state    max_abs=6.448e-04  rel=1.094e-03
+
+B=1 T=1000 Hk=16 Hv=48 Dk=128 Dv=128 bfloat16  worst rel=8.20e-03  (ref bf16-vs-fp32 floor on y: 5.02e-03)
+  y        max_abs=4.883e-04  rel=6.410e-03
+  state    max_abs=8.328e-04  rel=1.158e-03
+  dq       max_abs=1.250e-01  rel=8.197e-03
+  dk       max_abs=2.500e-01  rel=5.952e-03
+  dv       max_abs=1.562e-02  rel=5.181e-03
+  dg_log   max_abs=8.578e-03  rel=9.194e-04
+  dbeta    max_abs=1.250e-01  rel=4.425e-03
+  dstate0  max_abs=5.274e-05  rel=4.995e-04
+
+REPEATED-KEYS B=1 T=500 Hk=16 Hv=48 Dk=128 Dv=128 bfloat16  worst rel=8.50e-03  (ref bf16-vs-fp32 floor on y: 1.48e-02)
+  y        max_abs=4.883e-04  rel=4.505e-03
+  state    max_abs=6.756e-03  rel=6.654e-03
+  dq       max_abs=1.562e-01  rel=7.962e-03
+  dk       max_abs=1.000e+00  rel=7.812e-03
+  dv       max_abs=1.562e-02  rel=4.425e-03
+  dg_log   max_abs=2.023e-01  rel=8.502e-03
+  dbeta    max_abs=2.500e-01  rel=6.711e-03
+  dstate0  max_abs=3.732e-04  rel=1.058e-04
+
+worst relative error: {'mlx.core.float32': 0.007340263238950615, 'mlx.core.bfloat16': 0.00850184134818062}
