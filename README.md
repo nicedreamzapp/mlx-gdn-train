@@ -58,6 +58,45 @@ forward only), and the repeated-keys case. rel = max abs error / max |reference|
   difference of 0.018. mlx_lm's own Metal kernel differs from its own per-token path by 0.0087,
   so the bf16 noise across 64 layers is the same order. At 2048 tokens no layer goes non-finite.
 
+## Packed rows: per-example separation (added 2026-11-18)
+
+Packing several examples into one row without separating them lets every later example "see"
+the earlier ones: through the Gated DeltaNet recurrent state, through the depthwise conv1d
+(kernel 4) and through full attention. In the first GraftSelf run 74% of loss tokens sat after an
+unrelated conversation in the same row. `gdn_patch.set_segments(seg_start)` (a `[B, T]` bool,
+True on the first token of every example) turns on three things for the qwen3_5 training path:
+
+- `chunk_gated_delta(..., seg_start=...)` resets the recurrent state at each example start. It is
+  done with exact masks inside the chunk math (same-example pairs in the decay matrix, a
+  "no boundary yet" mask on the carried-state read-out, a "no boundary after" mask on what feeds
+  the next chunk's state, and the carried state dropped for a chunk that holds a boundary), not
+  with a huge negative log-decay, so fp32 agreement stays at 1e-5 and the boundary token's own
+  decay gets an exact zero gradient.
+- the conv1d taps that would read the previous example's last 3 tokens read zero instead
+  (`_segmented_conv`, same numbers as the stock conv on a single example).
+- the 16 full-attention layers get a block-diagonal causal boolean mask through
+  `mx.fast.scaled_dot_product_attention`. RoPE positions are not reset: scores depend only on
+  relative position, so an example at offset p equals the same example at offset 0.
+
+Tests (`test_correctness.py`, outputs in `results/test_tf32_off_segments.txt`):
+
+- kernel, 5 boundary layouts (boundary at token 0, chunk-aligned at 64/128, mid-chunk, several
+  boundaries in one chunk, boundary on the last token) vs mlx_lm's recurrence run per segment:
+  fp32 worst rel **6.2e-5** on y, state and all gradients (plain rows: 4.5e-5); bf16 worst
+  5.2e-3 against the reference's own bf16-vs-fp32 floor of 4.3e-3 to 7.1e-3.
+- a small random qwen3_5 model (6 GDN + 2 attention layers) through the patch, three packings
+  (3, 7 and 3x64-token examples): packed row vs each example alone gives logits rel **3e-6**,
+  identical loss, parameter gradients rel **1.4e-4** (7e-4 on A_log/dt_bias, which sum over every
+  token). bf16: logits rel 7-9e-2 against the reference's own floor of 7.5-8.3e-2; gradients
+  0.14-0.79 on the worst tensor against a reference floor of 0.19-1.17 (a 64-wide random bf16
+  net is that noisy). The same packed row WITHOUT segments differs from the separate runs by
+  rel 1.1, so the test does exercise the boundary.
+
+`check_mlx_fused_vjp.py`: the installed mlx 0.32.4 ships `mx.fast.gated_delta_update` with a
+VJP, but at the real head layout (Hk=16, Hv=48, D=128) its gradient wrt gamma is off by
+rel **1.03e+03** while q/k/v/beta are at 2e-3 (the mlx #4614 symptom; PR #4792 of 3 Nov 2026
+is NOT in 0.32.4). At Hk=2 it is exact. Do not train through the fused op on this mlx.
+
 ## Benchmark (real 27B bf16 base, LoRA r32 on every linear layer, batch 1, grad checkpointing, AdamW)
 
 `bench_train.py`, with logs and JSON in `results/`. Packed rows of the pilot's train.jsonl were

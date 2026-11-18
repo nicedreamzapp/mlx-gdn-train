@@ -1,0 +1,15 @@
+mlx 0.32.4 fused op: True
+
+shape B=1 T=100 Hk=2 Hv=6 D=32: fwd y rel 0.00e+00, state shape fused (1, 6, 32, 32) ref (1, 6, 32, 32)
+  dq      rel 0.000e+00
+  dk      rel 0.000e+00
+  dv      rel 0.000e+00
+  dgamma  rel 0.000e+00
+  dbeta   rel 0.000e+00
+
+shape B=1 T=300 Hk=16 Hv=48 D=128: fwd y rel 2.12e-03, state shape fused (1, 48, 128, 128) ref (1, 48, 128, 128)
+  dq      rel 2.007e-03
+  dk      rel 1.829e-03
+  dv      rel 2.361e-03
+  dgamma  rel 1.030e+03
+  dbeta   rel 2.168e-03

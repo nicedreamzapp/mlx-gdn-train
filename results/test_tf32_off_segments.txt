@@ -1,0 +1,285 @@
+
+B=1 T=64 Hk=1 Hv=1 Dk=32 Dv=32 float32  worst rel=9.50e-06
+  y        max_abs=4.619e-07  rel=3.501e-06
+  state    max_abs=5.960e-08  rel=1.111e-07
+  dq       max_abs=2.295e-06  rel=4.436e-07
+  dk       max_abs=7.153e-07  rel=1.605e-07
+  dv       max_abs=3.800e-07  rel=4.656e-07
+  dg_log   max_abs=2.468e-07  rel=9.502e-06
+  dbeta    max_abs=9.537e-07  rel=1.731e-07
+  dstate0  max_abs=1.863e-09  rel=1.883e-07
+
+B=2 T=100 Hk=2 Hv=6 Dk=32 Dv=32 float32  worst rel=7.66e-06
+  y        max_abs=5.988e-07  rel=3.310e-06
+  state    max_abs=1.192e-07  rel=1.170e-07
+  dq       max_abs=1.264e-05  rel=1.437e-06
+  dk       max_abs=2.876e-06  rel=1.931e-07
+  dv       max_abs=7.153e-07  rel=3.178e-07
+  dg_log   max_abs=1.859e-06  rel=7.655e-06
+  dbeta    max_abs=2.801e-06  rel=3.210e-07
+  dstate0  max_abs=1.118e-08  rel=1.494e-07
+
+B=2 T=130 Hk=4 Hv=4 Dk=64 Dv=32 float32  worst rel=4.80e-06
+  y        max_abs=2.543e-07  rel=2.759e-06
+  state    max_abs=5.960e-08  rel=7.255e-08
+  dq       max_abs=2.059e-05  rel=4.795e-06
+  dk       max_abs=2.015e-06  rel=1.599e-07
+  dv       max_abs=5.960e-07  rel=3.052e-07
+  dg_log   max_abs=7.711e-07  rel=3.188e-06
+  dbeta    max_abs=2.384e-06  rel=2.585e-07
+  dstate0  max_abs=2.328e-10  rel=1.365e-07
+
+B=1 T=300 Hk=16 Hv=48 Dk=128 Dv=128 float32  worst rel=4.48e-05
+  y        max_abs=2.123e-07  rel=2.864e-06
+  state    max_abs=3.254e-05  rel=4.460e-05
+  dq       max_abs=2.885e-05  rel=2.710e-06
+  dk       max_abs=1.350e-03  rel=3.146e-05
+  dv       max_abs=1.273e-04  rel=4.480e-05
+  dg_log   max_abs=1.520e-05  rel=5.239e-07
+  dbeta    max_abs=8.583e-04  rel=3.040e-05
+  dstate0  max_abs=4.470e-08  rel=6.251e-07
+
+B=1 T=2048 Hk=16 Hv=48 Dk=128 Dv=128 float32  worst rel=6.44e-06
+  y        max_abs=6.650e-07  rel=6.439e-06
+  state    max_abs=1.526e-06  rel=2.584e-06
+
+B=1 T=1000 Hk=16 Hv=48 Dk=128 Dv=128 float32  worst rel=1.22e-05
+  y        max_abs=4.638e-07  rel=6.095e-06
+  state    max_abs=8.762e-06  rel=1.219e-05
+  dq       max_abs=4.196e-05  rel=2.741e-06
+  dk       max_abs=3.009e-04  rel=7.177e-06
+  dv       max_abs=2.623e-05  rel=8.685e-06
+  dg_log   max_abs=6.735e-06  rel=7.251e-07
+  dbeta    max_abs=1.125e-04  rel=3.985e-06
+  dstate0  max_abs=3.725e-08  rel=3.526e-07
+
+REPEATED-KEYS B=1 T=500 Hk=16 Hv=48 Dk=128 Dv=128 float32  worst rel=1.12e-05
+  y        max_abs=3.101e-07  rel=2.848e-06
+  state    max_abs=3.636e-06  rel=3.478e-06
+  dq       max_abs=6.533e-05  rel=3.332e-06
+  dk       max_abs=9.613e-04  rel=7.508e-06
+  dv       max_abs=3.461e-06  rel=9.794e-07
+  dg_log   max_abs=2.689e-04  rel=1.124e-05
+  dbeta    max_abs=6.032e-05  rel=1.620e-06
+  dstate0  max_abs=3.815e-05  rel=1.081e-05
+
+B=1 T=64 Hk=1 Hv=1 Dk=32 Dv=32 bfloat16  worst rel=8.74e-04  (ref bf16-vs-fp32 floor on y: 6.61e-03)
+  y        max_abs=0.000e+00  rel=0.000e+00
+  state    max_abs=2.980e-08  rel=5.531e-08
+  dq       max_abs=0.000e+00  rel=0.000e+00
+  dk       max_abs=3.906e-03  rel=8.741e-04
+  dv       max_abs=0.000e+00  rel=0.000e+00
+  dg_log   max_abs=2.207e-07  rel=8.495e-06
+  dbeta    max_abs=0.000e+00  rel=0.000e+00
+  dstate0  max_abs=9.313e-10  rel=9.406e-08
+
+B=2 T=100 Hk=2 Hv=6 Dk=32 Dv=32 bfloat16  worst rel=4.20e-03  (ref bf16-vs-fp32 floor on y: 4.50e-03)
+  y        max_abs=3.052e-05  rel=1.689e-04
+  state    max_abs=1.192e-07  rel=1.168e-07
+  dq       max_abs=0.000e+00  rel=0.000e+00
+  dk       max_abs=6.250e-02  rel=4.202e-03
+  dv       max_abs=3.052e-05  rel=1.356e-05
+  dg_log   max_abs=1.874e-06  rel=7.713e-06
+  dbeta    max_abs=3.815e-06  rel=4.360e-07
+  dstate0  max_abs=1.118e-08  rel=1.487e-07
+
+B=2 T=130 Hk=4 Hv=4 Dk=64 Dv=32 bfloat16  worst rel=2.48e-03  (ref bf16-vs-fp32 floor on y: 5.01e-03)
+  y        max_abs=9.537e-07  rel=1.039e-05
+  state    max_abs=1.192e-07  rel=1.443e-07
+  dq       max_abs=3.906e-03  rel=9.058e-04
+  dk       max_abs=3.125e-02  rel=2.475e-03
+  dv       max_abs=7.629e-06  rel=3.891e-06
+  dg_log   max_abs=7.618e-07  rel=3.142e-06
+  dbeta    max_abs=6.104e-05  rel=6.598e-06
+  dstate0  max_abs=2.328e-10  rel=1.370e-07
+
+B=1 T=300 Hk=16 Hv=48 Dk=128 Dv=128 bfloat16  worst rel=3.29e-03  (ref bf16-vs-fp32 floor on y: 4.86e-03)
+  y        max_abs=2.441e-04  rel=3.289e-03
+  state    max_abs=3.237e-05  rel=4.464e-05
+  dq       max_abs=1.562e-02  rel=1.471e-03
+  dk       max_abs=1.250e-01  rel=2.907e-03
+  dv       max_abs=7.812e-03  rel=2.747e-03
+  dg_log   max_abs=1.568e-05  rel=5.403e-07
+  dbeta    max_abs=7.629e-06  rel=2.701e-07
+  dstate0  max_abs=3.725e-08  rel=5.224e-07
+
+B=1 T=2048 Hk=16 Hv=48 Dk=128 Dv=128 bfloat16  worst rel=1.18e-03  (ref bf16-vs-fp32 floor on y: 4.39e-03)
+  y        max_abs=1.221e-04  rel=1.179e-03
+  state    max_abs=1.524e-06  rel=2.586e-06
+
+B=1 T=1000 Hk=16 Hv=48 Dk=128 Dv=128 bfloat16  worst rel=5.95e-03  (ref bf16-vs-fp32 floor on y: 5.02e-03)
+  y        max_abs=6.104e-05  rel=8.013e-04
+  state    max_abs=8.762e-06  rel=1.218e-05
+  dq       max_abs=1.562e-02  rel=1.025e-03
+  dk       max_abs=2.500e-01  rel=5.952e-03
+  dv       max_abs=4.883e-04  rel=1.619e-04
+  dg_log   max_abs=6.154e-06  rel=6.596e-07
+  dbeta    max_abs=4.883e-04  rel=1.728e-05
+  dstate0  max_abs=2.980e-08  rel=2.823e-07
+
+REPEATED-KEYS B=1 T=500 Hk=16 Hv=48 Dk=128 Dv=128 bfloat16  worst rel=7.81e-03  (ref bf16-vs-fp32 floor on y: 1.48e-02)
+  y        max_abs=2.441e-04  rel=2.252e-03
+  state    max_abs=4.515e-06  rel=4.447e-06
+  dq       max_abs=6.250e-02  rel=3.185e-03
+  dk       max_abs=1.000e+00  rel=7.812e-03
+  dv       max_abs=4.883e-04  rel=1.383e-04
+  dg_log   max_abs=2.651e-04  rel=1.114e-05
+  dbeta    max_abs=3.906e-03  rel=1.049e-04
+  dstate0  max_abs=3.505e-05  rel=9.933e-06
+
+worst relative error (plain rows): {'mlx.core.float32': 4.4796399107729554e-05, 'mlx.core.bfloat16': 0.0078125}
+
+SEGMENTED bounds=[0, 20, 45] B=1 T=64 Hk=1 Hv=1 Dk=32 Dv=32 float32  worst rel=2.22e-05
+  y        max_abs=2.235e-08  rel=2.283e-07
+  state    max_abs=2.980e-08  rel=7.385e-08
+  dq       max_abs=3.397e-06  rel=9.362e-07
+  dk       max_abs=1.431e-06  rel=2.685e-07
+  dv       max_abs=1.788e-07  rel=1.845e-07
+  dg_log   max_abs=4.168e-08  rel=2.221e-05
+  dbeta    max_abs=9.537e-07  rel=2.381e-07
+  dstate0  max_abs=0.000e+00  rel=0.000e+00
+
+SEGMENTED bounds=[0, 64, 70, 71, 99] B=2 T=100 Hk=2 Hv=6 Dk=32 Dv=32 float32  worst rel=4.35e-06
+  y        max_abs=2.161e-07  rel=1.005e-06
+  state    max_abs=0.000e+00  rel=0.000e+00
+  dq       max_abs=1.383e-05  rel=1.874e-06
+  dk       max_abs=2.861e-06  rel=1.566e-07
+  dv       max_abs=4.768e-07  rel=2.156e-07
+  dg_log   max_abs=1.520e-06  rel=4.351e-06
+  dbeta    max_abs=2.146e-06  rel=3.339e-07
+  dstate0  max_abs=0.000e+00  rel=0.000e+00
+
+SEGMENTED bounds=[37, 64, 128] B=2 T=130 Hk=4 Hv=4 Dk=64 Dv=32 float32  worst rel=5.26e-05
+  y        max_abs=3.139e-07  rel=3.901e-06
+  state    max_abs=2.980e-08  rel=4.989e-08
+  dq       max_abs=2.231e-05  rel=4.326e-06
+  dk       max_abs=3.114e-06  rel=2.934e-07
+  dv       max_abs=3.576e-07  rel=1.628e-07
+  dg_log   max_abs=9.621e-07  rel=5.258e-05
+  dbeta    max_abs=2.384e-06  rel=2.317e-07
+  dstate0  max_abs=6.985e-10  rel=8.805e-08
+
+SEGMENTED bounds=[0, 5, 64, 100, 101, 250] B=1 T=300 Hk=16 Hv=48 Dk=128 Dv=128 float32  worst rel=4.99e-05
+  y        max_abs=2.338e-07  rel=2.087e-06
+  state    max_abs=2.322e-05  rel=2.140e-05
+  dq       max_abs=2.646e-05  rel=2.152e-06
+  dk       max_abs=1.480e-03  rel=3.081e-05
+  dv       max_abs=1.309e-04  rel=4.990e-05
+  dg_log   max_abs=2.861e-05  rel=8.736e-07
+  dbeta    max_abs=9.823e-04  rel=4.186e-05
+  dstate0  max_abs=0.000e+00  rel=0.000e+00
+
+SEGMENTED bounds=[128, 129, 300] B=1 T=500 Hk=16 Hv=48 Dk=128 Dv=128 float32  worst rel=6.17e-05
+  y        max_abs=4.973e-07  rel=4.994e-06
+  state    max_abs=5.031e-05  rel=4.752e-05
+  dq       max_abs=3.898e-05  rel=2.624e-06
+  dk       max_abs=2.394e-03  rel=5.268e-05
+  dv       max_abs=1.768e-04  rel=6.040e-05
+  dg_log   max_abs=3.815e-05  rel=8.686e-07
+  dbeta    max_abs=1.696e-03  rel=6.170e-05
+  dstate0  max_abs=1.043e-07  rel=5.857e-07
+
+SEGMENTED bounds=[0, 20, 45] B=1 T=64 Hk=1 Hv=1 Dk=32 Dv=32 bfloat16  worst rel=3.68e-04  (ref bf16-vs-fp32 floor on y: 5.18e-03)
+  y        max_abs=2.384e-07  rel=2.429e-06
+  state    max_abs=3.725e-09  rel=9.212e-09
+  dq       max_abs=2.441e-04  rel=6.706e-05
+  dk       max_abs=1.953e-03  rel=3.676e-04
+  dv       max_abs=3.815e-06  rel=3.938e-06
+  dg_log   max_abs=6.186e-08  rel=3.306e-05
+  dbeta    max_abs=0.000e+00  rel=0.000e+00
+  dstate0  max_abs=0.000e+00  rel=0.000e+00
+
+SEGMENTED bounds=[0, 64, 70, 71, 99] B=2 T=100 Hk=2 Hv=6 Dk=32 Dv=32 bfloat16  worst rel=2.14e-04  (ref bf16-vs-fp32 floor on y: 4.61e-03)
+  y        max_abs=7.629e-06  rel=3.535e-05
+  state    max_abs=0.000e+00  rel=0.000e+00
+  dq       max_abs=9.766e-04  rel=1.324e-04
+  dk       max_abs=3.906e-03  rel=2.140e-04
+  dv       max_abs=3.052e-05  rel=1.385e-05
+  dg_log   max_abs=1.431e-06  rel=4.077e-06
+  dbeta    max_abs=0.000e+00  rel=0.000e+00
+  dstate0  max_abs=0.000e+00  rel=0.000e+00
+
+SEGMENTED bounds=[37, 64, 128] B=2 T=130 Hk=4 Hv=4 Dk=64 Dv=32 bfloat16  worst rel=7.58e-04  (ref bf16-vs-fp32 floor on y: 7.09e-03)
+  y        max_abs=7.629e-06  rel=9.470e-05
+  state    max_abs=2.980e-08  rel=4.994e-08
+  dq       max_abs=3.906e-03  rel=7.576e-04
+  dk       max_abs=3.906e-03  rel=3.698e-04
+  dv       max_abs=1.907e-06  rel=8.719e-07
+  dg_log   max_abs=9.499e-07  rel=5.181e-05
+  dbeta    max_abs=1.192e-07  rel=1.156e-08
+  dstate0  max_abs=9.313e-10  rel=1.178e-07
+
+SEGMENTED bounds=[0, 5, 64, 100, 101, 250] B=1 T=300 Hk=16 Hv=48 Dk=128 Dv=128 bfloat16  worst rel=5.21e-03  (ref bf16-vs-fp32 floor on y: 4.26e-03)
+  y        max_abs=6.104e-05  rel=5.459e-04
+  state    max_abs=2.331e-05  rel=2.145e-05
+  dq       max_abs=1.562e-02  rel=1.269e-03
+  dk       max_abs=2.500e-01  rel=5.208e-03
+  dv       max_abs=1.953e-03  rel=7.440e-04
+  dg_log   max_abs=2.861e-05  rel=8.730e-07
+  dbeta    max_abs=1.526e-05  rel=6.493e-07
+  dstate0  max_abs=0.000e+00  rel=0.000e+00
+
+SEGMENTED bounds=[128, 129, 300] B=1 T=500 Hk=16 Hv=48 Dk=128 Dv=128 bfloat16  worst rel=2.75e-03  (ref bf16-vs-fp32 floor on y: 4.48e-03)
+  y        max_abs=6.104e-05  rel=6.127e-04
+  state    max_abs=5.028e-05  rel=4.746e-05
+  dq       max_abs=1.562e-02  rel=1.050e-03
+  dk       max_abs=1.250e-01  rel=2.747e-03
+  dv       max_abs=3.906e-03  rel=1.337e-03
+  dg_log   max_abs=4.196e-05  rel=9.555e-07
+  dbeta    max_abs=2.441e-04  rel=8.878e-06
+  dstate0  max_abs=1.043e-07  rel=5.857e-07
+
+worst relative error (segmented kernel vs per-segment reference): {'mlx.core.float32': 6.170124562252567e-05, 'mlx.core.bfloat16': 0.005208333333333333}
+[gdn_patch] chunked gated-delta training path ON for ['mlx_lm.models.qwen3_5', 'mlx_lm.models.qwen3_next']; packed-row separation (GDN state + conv reset, block-causal attention) via set_segments()
+
+PACKED MODEL lengths=[37, 70, 21] T=128 float32  worst rel=6.73e-04  [unsegmented packing differs by rel 1.07e+00: the leak the fix removes]
+  logits                                   max_abs=3.844e-06  rel=2.548e-06
+  loss                                     max_abs=0.000e+00  rel=0.000e+00
+  grads(all params, worst)                 max_abs=2.484e-05  rel=6.728e-04
+  grads(no A_log/dt_bias)                  max_abs=8.012e-06  rel=1.354e-04
+  worst grad tensor: language_model.model.layers.0.linear_attn.A_log
+[gdn_patch] chunked gated-delta training path ON for ['mlx_lm.models.qwen3_5', 'mlx_lm.models.qwen3_next']; packed-row separation (GDN state + conv reset, block-causal attention) via set_segments()
+
+PACKED MODEL lengths=[10, 12, 9, 33, 64, 2, 70] T=200 float32  worst rel=7.05e-04  [unsegmented packing differs by rel 1.14e+00: the leak the fix removes]
+  logits                                   max_abs=4.921e-06  rel=3.129e-06
+  loss                                     max_abs=0.000e+00  rel=0.000e+00
+  grads(all params, worst)                 max_abs=8.431e-06  rel=7.048e-04
+  grads(no A_log/dt_bias)                  max_abs=6.925e-06  rel=6.923e-05
+  worst grad tensor: language_model.model.layers.5.linear_attn.A_log
+[gdn_patch] chunked gated-delta training path ON for ['mlx_lm.models.qwen3_5', 'mlx_lm.models.qwen3_next']; packed-row separation (GDN state + conv reset, block-causal attention) via set_segments()
+
+PACKED MODEL lengths=[64, 64, 64] T=192 float32  worst rel=3.34e-04  [unsegmented packing differs by rel 1.08e+00: the leak the fix removes]
+  logits                                   max_abs=4.917e-06  rel=3.126e-06
+  loss                                     max_abs=3.052e-05  rel=6.207e-08
+  grads(all params, worst)                 max_abs=6.925e-06  rel=3.338e-04
+  grads(no A_log/dt_bias)                  max_abs=2.995e-06  rel=9.088e-05
+  worst grad tensor: language_model.model.layers.0.linear_attn.A_log
+[gdn_patch] chunked gated-delta training path ON for ['mlx_lm.models.qwen3_5', 'mlx_lm.models.qwen3_next']; packed-row separation (GDN state + conv reset, block-causal attention) via set_segments()
+
+PACKED MODEL lengths=[37, 70, 21] T=128 bfloat16  worst rel=3.40e-01  (ref bf16-vs-fp32 floor on logits: 7.89e-02)  [unsegmented packing differs by rel 1.07e+00: the leak the fix removes]
+  logits                                   max_abs=1.055e-01  rel=7.031e-02
+  loss                                     max_abs=2.363e-01  rel=6.912e-04
+  grads(all params, worst)                 max_abs=4.150e-03  rel=3.400e-01
+  grads(no A_log/dt_bias)                  max_abs=3.281e-01  rel=1.346e-01
+  ref grad floor bf16-vs-fp32 (worst tensor) max_abs=0.000e+00  rel=2.012e-01
+  worst grad tensor: language_model.model.layers.2.linear_attn.dt_bias
+[gdn_patch] chunked gated-delta training path ON for ['mlx_lm.models.qwen3_5', 'mlx_lm.models.qwen3_next']; packed-row separation (GDN state + conv reset, block-causal attention) via set_segments()
+
+PACKED MODEL lengths=[10, 12, 9, 33, 64, 2, 70] T=200 bfloat16  worst rel=1.37e-01  (ref bf16-vs-fp32 floor on logits: 8.34e-02)  [unsegmented packing differs by rel 1.16e+00: the leak the fix removes]
+  logits                                   max_abs=1.426e-01  rel=9.264e-02
+  loss                                     max_abs=1.240e-01  rel=2.441e-04
+  grads(all params, worst)                 max_abs=4.812e+00  rel=1.365e-01
+  grads(no A_log/dt_bias)                  max_abs=4.812e+00  rel=1.365e-01
+  ref grad floor bf16-vs-fp32 (worst tensor) max_abs=0.000e+00  rel=1.860e-01
+  worst grad tensor: language_model.model.layers.0.linear_attn.in_proj_qkv.weight
+[gdn_patch] chunked gated-delta training path ON for ['mlx_lm.models.qwen3_5', 'mlx_lm.models.qwen3_next']; packed-row separation (GDN state + conv reset, block-causal attention) via set_segments()
+
+PACKED MODEL lengths=[64, 64, 64] T=192 bfloat16  worst rel=7.89e-01  (ref bf16-vs-fp32 floor on logits: 7.52e-02)  [unsegmented packing differs by rel 1.12e+00: the leak the fix removes]
+  logits                                   max_abs=1.082e-01  rel=7.027e-02
+  loss                                     max_abs=1.099e-01  rel=2.235e-04
+  grads(all params, worst)                 max_abs=1.926e-02  rel=7.887e-01
+  grads(no A_log/dt_bias)                  max_abs=1.160e-02  rel=3.125e-01
+  ref grad floor bf16-vs-fp32 (worst tensor) max_abs=0.000e+00  rel=1.173e+00
+  worst grad tensor: language_model.model.layers.4.linear_attn.dt_bias
+
+worst relative error (packed qwen3_5 model vs separate examples): {'mlx.core.float32': 0.0007048147418624766, 'mlx.core.bfloat16': 0.78875}

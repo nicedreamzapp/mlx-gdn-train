@@ -15,6 +15,11 @@ Inputs follow mlx_lm's layout:
     g_log  [B, T, Hv]       log of the per-step decay (<= 0)
     beta   [B, T, Hv]
     state  [B, Hv, Dv, Dk]  or None
+    seg_start [B, T] bool, optional: True on the first token of every packed example. The
+           recurrent state is reset to zero there (decay 0 on that step), so each example in a
+           packed row sees only its own tokens. Implemented with exact masks on the chunk math
+           (same-segment pairs, "no boundary yet" / "no boundary after" per token), not with a
+           huge negative log-decay, so fp32 agreement stays at ~1e-5. None = plain path.
 Returns y [B, T, Hv, Dv] (dtype of q) and the final state [B, Hv, Dv, Dk] (float32).
 """
 
@@ -61,6 +66,7 @@ def chunk_gated_delta(
     g_log: mx.array,
     beta: mx.array,
     state: Optional[mx.array] = None,
+    seg_start: Optional[mx.array] = None,
     chunk: int = CHUNK,
 ) -> Tuple[mx.array, mx.array]:
     B, T, Hk, Dk = q.shape
@@ -75,12 +81,22 @@ def chunk_gated_delta(
     f32 = mx.float32
     q, k, v = q.astype(f32), k.astype(f32), v.astype(f32)
     g_log, beta = g_log.astype(f32), beta.astype(f32)
+    seg = None
+    if seg_start is not None:
+        seg = seg_start.astype(mx.bool_)
+        if seg.ndim == 1:
+            seg = mx.broadcast_to(seg[None], (B, T))
+        # the boundary token's own decay never acts on anything (the state it would decay is
+        # zeroed), so drop it from the cumulative sums: cleaner numerics, exact zero gradient
+        g_log = mx.where(seg[..., None], 0.0, g_log)
 
     pad = (-T) % C
     if pad:
         # zero k/v/beta and zero log-decay leave the state untouched
         q, k, v = (mx.pad(t, [(0, 0), (0, pad), (0, 0), (0, 0)]) for t in (q, k, v))
         g_log, beta = (mx.pad(t, [(0, 0), (0, pad), (0, 0)]) for t in (g_log, beta))
+        if seg is not None:
+            seg = mx.pad(seg, [(0, 0), (0, pad)])
     N = (T + pad) // C
 
     # [B, T, H, D] -> [B, H, N, C, D]
@@ -96,21 +112,36 @@ def chunk_gated_delta(
 
     incl = mx.tril(mx.ones((C, C), dtype=mx.bool_))
     strict = mx.tril(mx.ones((C, C), dtype=mx.bool_), k=-1)
+    if seg is not None:
+        # chunk-local segment index per token: [B, 1, N, C] (broadcasts over heads)
+        cnt = mx.cumsum(seg.reshape(B, N, C).astype(mx.int32), axis=-1)[:, None]
+        same = cnt[..., :, None] == cnt[..., None, :]  # [B, 1, N, C, C] same example
+        incl = incl & same
+        nb = (cnt == 0).astype(f32)  # no boundary at or before token i: may read the carried state
+        nl = (cnt == cnt[..., -1:]).astype(f32)  # no boundary after token j: feeds the next state
+        nochunk = (cnt[..., -1:] == 0).astype(f32)  # [B, 1, N, 1] no boundary in this chunk
     diff = G[..., :, None] - G[..., None, :]  # G_i - G_j
-    L = mx.exp(mx.where(incl, diff, -mx.inf))  # decay from j to i, 0 above diagonal
+    L = mx.exp(mx.where(incl, diff, -mx.inf))  # decay from j to i, 0 above diagonal / across examples
 
     kT = k.swapaxes(-1, -2)
     kb = k * beta[..., None]
     A = mx.where(strict, (kb @ kT) * L, 0.0)
     Tm = _unit_lower_inverse(A, C)  # (I + A)^{-1}
 
-    u = Tm @ (v * beta[..., None])  # [B, H, N, C, Dv]
-    w = Tm @ (kb * mx.exp(G)[..., None])  # [B, H, N, C, Dk]
-
-    qg = q * mx.exp(G)[..., None]  # for the inter-chunk read-out
-    Aqk = (q @ kT) * L  # intra-chunk causal scores incl. diagonal
-    kdec = (k * mx.exp(G_last - G)[..., None]).swapaxes(-1, -2)  # [B, H, N, Dk, C]
+    eG = mx.exp(G)  # decay from chunk start to token i
+    eGl = mx.exp(G_last - G)  # decay from token j to chunk end
     dlast = mx.exp(G_last)[..., None]  # [B, H, N, 1, 1]
+    if seg is not None:
+        eG = eG * nb
+        eGl = eGl * nl
+        dlast = dlast * nochunk[..., None]
+
+    u = Tm @ (v * beta[..., None])  # [B, H, N, C, Dv]
+    w = Tm @ (kb * eG[..., None])  # [B, H, N, C, Dk]
+
+    qg = q * eG[..., None]  # for the inter-chunk read-out
+    Aqk = (q @ kT) * L  # intra-chunk causal scores incl. diagonal
+    kdec = (k * eGl[..., None]).swapaxes(-1, -2)  # [B, H, N, Dk, C]
 
     # recurrence over chunks; S kept as [Dk, Dv]
     if state is None:
